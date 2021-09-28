@@ -23,7 +23,7 @@ const flag = confirm("Пропускати парні числа?");
 
 let sum = 0;
 console.log(nInteger, mInteger);
-for (i = nInteger + 1; i<= mInteger; i++)
+for (i = nInteger; i<= mInteger; i++)
 {
     if(flag)
     {
