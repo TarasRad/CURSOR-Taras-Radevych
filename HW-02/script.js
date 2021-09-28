@@ -1,19 +1,19 @@
-let n = prompt("Введіть ціле число 'n': ");
+let n = prompt("Введіть число 'n': ");
 nInteger = parseInt(n , 10);
 
 
 while(isNaN(nInteger)){
-    let n = prompt("Ви ввели не число, введіть коректне число ціле 'n': ");
+    let n = prompt("Ви ввели не число, введіть коректне число 'n': ");
     nInteger = parseInt(n , 10);
     console.log(nInteger);
     
 }
 
-let m = prompt("Введіть ціле число 'm': ");
+let m = prompt("Введіть число 'm': ");
 mInteger = parseInt(m , 10);
 
 while(isNaN(mInteger) || nInteger > mInteger) {
-    let m = prompt("Ви ввели не число, введіть коректне число ціле 'm': ");
+    let m = prompt("Ви ввели не число, введіть коректне число 'm': ");
     mInteger = parseInt(m , 10);
     console.log(mInteger);
     document.writeln(mInteger);
