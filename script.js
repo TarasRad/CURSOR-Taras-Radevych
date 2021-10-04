@@ -1,57 +1,95 @@
-console.log("Зміни внесено");
-const silverPrice = 15.678;
-const goldPrice = 90.2345;
-const platinumPrice = 123.965;
-console.log("Максимальне число: " + Math.max(silverPrice, goldPrice, platinumPrice));
-console.log("Мінімальне число: " + Math.min(silverPrice, goldPrice, platinumPrice));
-summ = silverPrice + goldPrice + platinumPrice;
-console.log("Сума вартості всіх товарів: " + summ);
+function capsFirstLetter(str) {
+  if (!str) return str;
+  return str[0].toUpperCase() + str.slice(1).toLowerCase();
+}
+//console.log(capsFirstLetter('tEXt')) // - тест функції
 
-const silverPriceFloor = (Math.floor(silverPrice))
-console.log("Ціле чиало вартості товару, округлене в менший бік: "+silverPriceFloor);
+const getFinallySalary = (fullsalary) => {
+  let percent = (fullsalary / 100) * 19.5;
+  let salary = fullsalary - percent;
+  return salary;
+};
+//console.log(getFinallySalary(1200)); // - тест функції
 
-const goldPriceFloor = (Math.floor(goldPrice));
-console.log("Ціле чиало вартості товару, округлене в менший бік: " + goldPriceFloor);
+const countLetter = (letter, word) => {
+  let count = 0;
+  let i = 0;
+  word = word.toLowerCase();
+  for (i = 0; i < word.length; i++) {
+    if (word.charAt(i) == letter) {
+      count++;
+    }
+  }
+  return count;
+};
 
-const platinumPriceFloor = (Math.floor(platinumPrice));
-console.log("Ціле чиало вартості товару, округлене в менший бік: " + platinumPriceFloor);
+const deleteLetter = (findLetter, someText) => {
+  let count = 0;
+  let i = 0;
+  let lenght = someText.length;
+  someText = someText.toLowerCase();
+  for (i = 0; i < lenght; i++) {
+    if (someText.charAt(i) == findLetter) {
+      someText = someText.replaceAll(findLetter, "");
+      break;
+    }
+  }
+  return someText;
+};
+//console.log(deleteLetter("d", "dddd dolboyo bdddd")); //тест функції
 
-const summRounded = 300;
-summRound = silverPriceFloor + goldPriceFloor + platinumPriceFloor;
-console.log("Сума товарів, округлена до сотень " + Math.max(summRound,summRounded));//не зрозумів
+const exchangeCurrency = (someText) => {
+  let count = 0;
+  let i = 0;
 
-const floorSum = ((Math.floor(summ / 100)) * 100);
-console.log("Сума заокруглена до меншого: " + floorSum);
+  someText = someText.toLowerCase();
 
-function checkIfEven(floorSum) {
-	return floorSum % 2 == 0
+  for (i = 0; i < someText.length; i++) {
+    if (someText.charAt(i) == "$") {
+      someText = someText.substring(0, i - 1); // обрізає стрічку від початку до першого знаку$
+      someText = someText * 25;
 
+      break;
+    } else if (someText.charAt(i) == "u") {
+      someText = someText.substring(0, i);
+      someText = someText / 25;
+      //console.log("фініш " + someText);
+      break;
+    }
+  }
+  //console.log("фініш " + someText);
+
+  return someText;
+};
+//console.log(exchangeCurrency("10000UAH")); //тест функції
+
+function getRandomPassword(m) {
+  //let m = prompt("Введіть число 'm': ");
+  mInteger = parseInt(m, 10);
+
+  if (isNaN(mInteger) || mInteger > 8) {
+    length = 8;
+  } else {
+    length = mInteger;
+  }
+
+  let text = "";
+  let possible = "0123456789";
+
+  for (let i = 0; i < length; i++) {
+    let rand = Math.random();
+    //console.log("rand " + rand );
+    //console.log( rand * (possible.length));
+
+    let sup = Math.floor(rand * possible.length);
+
+    //console.log(sup);
+    //console.log(i);
+
+    text = text + (i == 0 && sup == i ? "1" : possible.charAt(sup));
+    //console.log("-- " + text);
+  }
+  return Number(text);
 }
 
-console.log("Число є парним: " + checkIfEven(floorSum));
-
-let pay = 500;
-console.log("Сума решти, при оплаті всіх товарів куп‘юрою 500 грн: " + (pay-summ));
-
-
-let price = [silverPrice, goldPrice, platinumPrice];
-let sum = 0;
-for( let i = 0; i < price.length; i++ ){
-    sum += parseFloat( price[i], 10);
-}
-
-const avg = sum/price.length;
-
-
-console.log("Середнє значення сум, округлене до другого знаку, після коми: "+avg.toFixed(2));
-
-
-let discount = Math.random() * 101;
-let discountSumm = summ * discount / 100;
-let paySumm = summ - discountSumm;
-console.log("Сума до оплати з рондомною знижкою, заокругленою до 2 знаків після коми: " + paySumm.toFixed(2));
-
-let profit = summ/2;
-let discountProfit = profit - discount;
-console.log("Чистий прибуток, з урахуванням знижки: " + discountProfit);
-console.log("Чистий прибуток, з урахуванням знижки, округлений до 2х знаків після коми: " + discountProfit.toFixed(2));
+//console.log(getRandomPassword(5));
