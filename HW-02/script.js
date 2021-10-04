@@ -36,3 +36,26 @@ document.writeln("Введене число 'm': " + mInteger);
 document.writeln(
   "Результат додавання чисел у діапазоні від 'n' до 'm': " + sum
 );
+
+//Ще можна було б переписати
+//for (i = nInteger; i<= mInteger; i++)
+//{
+//if(flag)
+//{
+//if(i % 2 == 0)
+//{
+//continue;
+//}
+//}
+//
+//sum = sum + i;
+//
+//}
+//в
+//for(i = nInteger; i<= mInteger; i++) {
+//if (flag && i % 2 == 0) {
+//continue;
+//}
+//
+//sum = sum + i;
+//}
