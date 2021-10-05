@@ -22,6 +22,7 @@ const countLetter = (letter, word) => {
   }
   return count;
 };
+//console.log(countLetter("а", "Асталавіста"));
 
 const deleteLetter = (findLetter, someText) => {
   let count = 0;
@@ -91,5 +92,9 @@ function getRandomPassword(m) {
   }
   return Number(text);
 }
-
-//console.log(getRandomPassword(5));
+console.log(capsFirstLetter("tEXt")); // - тест функції
+console.log(getFinallySalary(1200)); // - тест функції
+console.log(countLetter("а", "Асталавіста"));
+console.log(deleteLetter("d", "dddd dolboyo bdddd")); //тест функції
+console.log(exchangeCurrency("10000UAH")); //тест функції
+console.log(getRandomPassword(5));
