@@ -1,86 +1,76 @@
-const capsFirstLetter = (str) => {
-  if (!str) return str;
-  return str[0].toUpperCase() + str.slice(1).toLowerCase();
-};
+const students = [
+  { name: "Олександр", s: "M" },
+  { name: "Ігор", s: "M" },
+  { name: "Олена", s: "F" },
+  { name: "Іра", s: "F" },
+  { name: "Олексій", s: "M" },
+  { name: "Світлана", s: "F" },
+];
 
-const getFinallySalary = (fullsalary) => {
-  let percent = (fullsalary / 100) * 19.5;
-  let salary = fullsalary - percent;
-  return salary;
-};
+const themes = [
+  "Диференційне рівняння",
+  "Теорія автоматів",
+  "Алгоритми і структури даних",
+];
+const marks = [4, 5, 5, 3, 4, 5];
 
-const countLetter = (letter, word) => {
-  let count = 0;
-  let i = 0;
-  word = word.toLowerCase();
-  for (i = 0; i < word.length; i++) {
-    if (word.charAt(i) == letter) {
-      count++;
-    }
-  }
-  return count;
-};
+function getPairs(students) {
+  const men = [];
+  const women = [];
 
-const deleteLetter = (findLetter, currency) => {
-  let count = 0;
-  let i = 0;
-  let lenght = currency.length;
-  currency = currency.toLowerCase();
-  for (i = 0; i < lenght; i++) {
-    if (currency.charAt(i) == findLetter) {
-      currency = currency.replaceAll(findLetter, "");
-      break;
-    }
-  }
-  return currency;
-};
-
-const exchangeCurrency = (currency) => {
-  let count = 0;
-  let i = 0;
-
-  currency = currency.toLowerCase();
-
-  for (i = 0; i < currency.length; i++) {
-    if (currency.charAt(i) == "$") {
-      currency = currency.substring(0, i - 1); // обрізає стрічку від початку до першого знаку$
-      currency = currency * 25;
-
-      break;
-    } else if (currency.charAt(i) == "u") {
-      currency = currency.substring(0, i);
-      currency = currency / 25;
-      break;
-    }
+  for (i in students) {
+    if (students[i].s == "M") men.push(students[i].name);
+    else if (students[i].s == "F") women.push(students[i].name);
   }
 
-  return currency;
-};
+  const groups = new Array(3);
+  for (var i = 0; i < groups.length; i++) {
+    groups[i] = new Array(2);
 
-const getRandomPassword = (m = 8) => {
-  mInteger = parseInt(m, 10);
-
-  if (isNaN(mInteger) || mInteger > 8) {
-    length = 8;
-  } else {
-    length = mInteger;
+    groups[i][0] = men[i];
+    groups[i][1] = women[i];
   }
 
-  let text = "";
-  let possible = "0123456789";
+  // 1
+  //console.log(groups);
 
-  for (let i = 0; i < length; i++) {
+  const groupsThemes = [];
+  for (i in groups) {
+    groupsThemes[i] = new Array(2);
+
+    groupsThemes[i][0] = groups[i];
+    groupsThemes[i][1] = themes[i];
+  }
+
+  // 2
+  // console.log(groupsThemes);
+
+  const studentsMarks = [];
+  for (i in students) {
+    studentsMarks[i] = new Array(2);
+
+    studentsMarks[i][0] = students[i].name;
+    studentsMarks[i][1] = marks[i];
+  }
+
+  // 3
+  //console.log(studentsMarks);
+
+  const groupsThemesMarks = [];
+  for (i in groupsThemes) {
+    groupsThemesMarks[i] = new Array(2);
+
+    groupsThemesMarks[i][0] = groupsThemes[i];
+
     let rand = Math.random();
+    var mark = Math.floor(rand * 5) + 1;
 
-    let sup = Math.floor(rand * possible.length);
-
-    text = text + (i == 0 && sup == i ? "1" : possible.charAt(sup));
+    groupsThemesMarks[i][1] = mark;
   }
-  return Number(text);
-};
-console.log(capsFirstLetter("tEXt")); // - тест функції
-console.log(getFinallySalary(1200)); // - тест функції
-console.log(countLetter("а", "Асталавіста"));
-console.log(deleteLetter("d", "dddd dolboyo bdddd")); //тест функції
-console.log(exchangeCurrency("10000UAH")); //тест функції
-console.log(getRandomPassword(5));
+
+  // 4
+  console.log(groupsThemesMarks);
+}
+
+const pairs = getPairs(students);
+console.log(pairs);
