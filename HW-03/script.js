@@ -1,13 +1,15 @@
-const capsFirstLetter = (str) => {
+function capsFirstLetter(str) {
   if (!str) return str;
   return str[0].toUpperCase() + str.slice(1).toLowerCase();
-};
+}
+//console.log(capsFirstLetter('tEXt')) // - тест функції
 
 const getFinallySalary = (fullsalary) => {
   let percent = (fullsalary / 100) * 19.5;
   let salary = fullsalary - percent;
   return salary;
 };
+//console.log(getFinallySalary(1200)); // - тест функції
 
 const countLetter = (letter, word) => {
   let count = 0;
@@ -20,44 +22,50 @@ const countLetter = (letter, word) => {
   }
   return count;
 };
+//console.log(countLetter("а", "Асталавіста"));
 
-const deleteLetter = (findLetter, currency) => {
+const deleteLetter = (findLetter, someText) => {
   let count = 0;
   let i = 0;
-  let lenght = currency.length;
-  currency = currency.toLowerCase();
+  let lenght = someText.length;
+  someText = someText.toLowerCase();
   for (i = 0; i < lenght; i++) {
-    if (currency.charAt(i) == findLetter) {
-      currency = currency.replaceAll(findLetter, "");
+    if (someText.charAt(i) == findLetter) {
+      someText = someText.replaceAll(findLetter, "");
       break;
     }
   }
-  return currency;
+  return someText;
 };
+//console.log(deleteLetter("d", "dddd dolboyo bdddd")); //тест функції
 
-const exchangeCurrency = (currency) => {
+const exchangeCurrency = (someText) => {
   let count = 0;
   let i = 0;
 
-  currency = currency.toLowerCase();
+  someText = someText.toLowerCase();
 
-  for (i = 0; i < currency.length; i++) {
-    if (currency.charAt(i) == "$") {
-      currency = currency.substring(0, i - 1); // обрізає стрічку від початку до першого знаку$
-      currency = currency * 25;
+  for (i = 0; i < someText.length; i++) {
+    if (someText.charAt(i) == "$") {
+      someText = someText.substring(0, i - 1); // обрізає стрічку від початку до першого знаку$
+      someText = someText * 25;
 
       break;
-    } else if (currency.charAt(i) == "u") {
-      currency = currency.substring(0, i);
-      currency = currency / 25;
+    } else if (someText.charAt(i) == "u") {
+      someText = someText.substring(0, i);
+      someText = someText / 25;
+      //console.log("фініш " + someText);
       break;
     }
   }
+  //console.log("фініш " + someText);
 
-  return currency;
+  return someText;
 };
+//console.log(exchangeCurrency("10000UAH")); //тест функції
 
-const getRandomPassword = (m = 8) => {
+function getRandomPassword(m) {
+  //let m = prompt("Введіть число 'm': ");
   mInteger = parseInt(m, 10);
 
   if (isNaN(mInteger) || mInteger > 8) {
@@ -71,13 +79,19 @@ const getRandomPassword = (m = 8) => {
 
   for (let i = 0; i < length; i++) {
     let rand = Math.random();
+    //console.log("rand " + rand );
+    //console.log( rand * (possible.length));
 
     let sup = Math.floor(rand * possible.length);
 
+    //console.log(sup);
+    //console.log(i);
+
     text = text + (i == 0 && sup == i ? "1" : possible.charAt(sup));
+    //console.log("-- " + text);
   }
   return Number(text);
-};
+}
 console.log(capsFirstLetter("tEXt")); // - тест функції
 console.log(getFinallySalary(1200)); // - тест функції
 console.log(countLetter("а", "Асталавіста"));

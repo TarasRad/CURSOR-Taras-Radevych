@@ -1,28 +1,77 @@
-//const students = [
-//  "Олександр", "Ігор", "Олена", "Іра", "Олексій", "Світлана",
-//];
+const students = ["Олександр", "Ігор", "Олена", "Іра", "Олексій", "Світлана"];
 
-const names = ["Олександр", "Ігор", "Олена", "Іра", "Олексій", "Світлана"];
-const namesString = "Виктор и Карина и Татьяна и Юрий и Ирина";
+const themes = [
+  "Диференційне рівняння",
+  "Теорія автоматів",
+  "Алгоритми і структури даних",
+];
+const marks = [4, 5, 5, 3, 4, 5];
 
-//document.writeln(`В массиве есть Игорь? ---> ${names.includes("Игорь")} <br>`);
-//document.writeln(`В массиве есть Влад? ---> ${names.includes("Влад")} <br>`);
-//document.writeln(`Индекс Игоря ---> ${names.indexOf("Игорь")} <br>`);
-//document.writeln(`Индекс Влада ---> ${names.indexOf("Влад")} <br>`);
-//document.writeln(`Создадим массив из строки с именами: ${namesString.split(" и ")} <br>`);
-document.writeln(`Создадим строку из массива с именами: ${names.join("! ")} <br>`);
-document.writeln(`Объединим и выведем оба наших массива с именами: ${names.concat(namesString.split(" и "))} <br>`);
-document.writeln(`Тоже самое с помощью spread оператора: ${[...names, ...namesString.split(" и ")]} <br>`);
-document.writeln(`Показать имена с 2 по 5(включительно): ${names.slice(2, 5)}<br>`);
+function getPairs(students) {
+  const men = [];
+  const women = [];
+  const groups = new Array(3);
 
-// .splice() – МУТИРУЕТ МАССИВ!!!
-const oldNames = names.splice(1, 2, "Влад", "Женя");
-document.writeln(`Заменим имена Игорь и Светлана на имена Влад и Женя: ${names} <br>`);
+  for (i in students) {
+    let name = students[i].split("");
+    let j = name.length - 1;
 
+    if (name[j] === "а") {
+      women.push(students[i]);
+    } else {
+      men.push(students[i]);
+    }
+  }
 
+  for (let i = 0; i < groups.length; i++) {
+    groups[i] = new Array(2);
 
-console.log(names.lastIndexOf('а'))
+    groups[i][0] = men[i];
+    groups[i][1] = women[i];
+  }
 
+  return groups;
+}
 
+function getGroupThemes() {
+  const groupsThemes = [];
+  let groups = getPairs(students);
+  for (i in groups) {
+    groupsThemes[i] = new Array(2);
 
-'канал'.lastIndexOf('а', 2);  // вернёт 1
+    groupsThemes[i][0] = groups[i];
+    groupsThemes[i][1] = themes[i];
+  }
+  return groupsThemes;
+}
+
+function getStudentMarks() {
+  const studentsMarks = [];
+  for (i in students) {
+    studentsMarks[i] = new Array(2);
+
+    studentsMarks[i][0] = students[i];
+    studentsMarks[i][1] = marks[i];
+  }
+  return studentsMarks;
+}
+
+function getStudentMarksTheme() {
+  const groupsThemesMarks = [];
+  let groupsThemes = getGroupThemes();
+  for (i in groupsThemes) {
+    groupsThemesMarks[i] = new Array(2);
+
+    groupsThemesMarks[i][0] = groupsThemes[i];
+
+    let rand = Math.random();
+    var mark = Math.floor(rand * 5) + 1;
+
+    groupsThemesMarks[i][1] = mark;
+  }
+  return groupsThemesMarks;
+}
+console.log(getPairs(students));
+console.log(getGroupThemes());
+console.log(getStudentMarks());
+console.log(getStudentMarksTheme());
