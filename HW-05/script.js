@@ -1,6 +1,6 @@
 function filterEvenNumbers(array) {
   for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i] % 2 == 0) {
+    if (array[i] % 2 === 0) {
       array.splice(i, 1);
     }
   }
@@ -42,7 +42,7 @@ countPositiveNumbers(new Array(4, 3, 14, -3, 0, -6, 8));
 function getDividedByFive(array) {
   let dividedArray = [];
   for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i] % 5 == 0 && array[i] !== 0) {
+    if (array[i] % 5 === 0 && array[i] !== 0) {
       dividedArray.push(array[i]);
     }
   }
@@ -50,7 +50,7 @@ function getDividedByFive(array) {
   console.log(dividedArray);
 }
 
-getDividedByFive(new Array(4, 3, 14, -3, 0, -6, 8, 5, 10, 55));
+getDividedByFive([4, 3, 14, -3, 0, -6, 8, 5, 10, 55]);
 
 function generateCombinations(word) {
   if (word.length < 2) {
