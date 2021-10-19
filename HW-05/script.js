@@ -1,20 +1,17 @@
-function filterEvenNumbers(array) {
-  for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i] % 2 === 0) {
-      array.splice(i, 1);
-    }
-  }
-
-  console.log(array);
+function filterEvenNumbers(...numbers) {
+  const result = numbers.filter((num) => num % 2 !== 0);
+  return result;
 }
+
+console.log(filterEvenNumbers(1, 2, 3, 4, 5, 6));
 
 filterEvenNumbers(new Array(4, 3, 16, 12, 7, 20, 24));
 
 function calcMedian(array) {
-  let sum = 0;
-  for (let i = array.length - 1; i >= 0; i--) {
-    sum += array[i];
-  }
+  const sum = array.reduce((total, amount) => {
+    return (total += amount);
+  });
+  console.log(sum);
 
   let median = sum / array.length;
   if (Number.isInteger(median)) {
@@ -23,21 +20,17 @@ function calcMedian(array) {
     console.log(median + " - не ціле число");
   }
 }
+console.log(calcMedian([1, 2, 3, 4, 5]));
 
-calcMedian(new Array(4, 3, 14));
-
-function countPositiveNumbers(array) {
-  let count = 0;
-  for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i] > 0) {
-      count++;
-    }
-  }
-
-  console.log(count);
+function countPositiveNumbers(...numbers) {
+  const result = numbers.filter((num) => num > 0);
+  return result.reduce((amount) => result.length);
 }
 
-countPositiveNumbers(new Array(4, 3, 14, -3, 0, -6, 8));
+console.log(
+  "Кількість чисел, які більші за '0': " +
+    countPositiveNumbers(1, -2, 3, -4, -5, 6)
+);
 
 function getDividedByFive(array) {
   let dividedArray = [];
