@@ -28,7 +28,7 @@ const students = [
   },
 ];
 function getSubjects(students) {
-  for (i in students) {
+  for (let i in students) {
     let subjArray = [];
     let subjArrayChanged = [];
     subjArray[i] = Object.keys(students[i].subjects);
@@ -50,12 +50,12 @@ function myCap(str) {
 console.log(getSubjects(students));
 
 function getAverageMark(student) {
-  for (i in students) {
+  for (let i in students) {
     let subjArray = [];
     let subjArrayStudent = [];
     subjArray[i] = students[i].name;
 
-    if (student.toUpperCase() == subjArray[i].toUpperCase()) {
+    if (student.toUpperCase() === subjArray[i].toUpperCase()) {
       subjArrayStudent = Object.values(students[i].subjects);
       let sumAll = 0;
       let len = 0;
@@ -82,13 +82,13 @@ function getAverageMark(student) {
 console.log(getAverageMark("Victor".toUpperCase()));
 
 function getStudentInfo(student) {
-  for (i in students) {
+  for (let i in students) {
     let subjArray = [];
     let studentCourse = "";
     let map = new Map();
     subjArray[i] = students[i].name;
 
-    if (student.toUpperCase() == subjArray[i].toUpperCase()) {
+    if (student.toUpperCase() === subjArray[i].toUpperCase()) {
       studentCourse = students[i].course;
       map.set("course", studentCourse);
       map.set("name", students[i].name);
@@ -104,7 +104,7 @@ console.log(getStudentInfo("Anton".toUpperCase()));
 
 function getStudentsNames(students) {
   let namesArray = [];
-  for (i in students) {
+  for (let i in students) {
     namesArray.push(Object.values(students[i].name));
   }
 
