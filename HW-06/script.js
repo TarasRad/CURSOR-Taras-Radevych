@@ -33,7 +33,7 @@ function getSubjects(students) {
     let subjArrayChanged = [];
     subjArray[i] = Object.keys(students[i].subjects);
 
-    for (j = 0; j < subjArray[i].length; j++) {
+    for (let j = 0; j < subjArray[i].length; j++) {
       let subject = myCap(subjArray[i][j].replace("_", " "));
 
       subjArrayChanged.push(subject);
@@ -59,12 +59,12 @@ function getAverageMark(student) {
       subjArrayStudent = Object.values(students[i].subjects);
       let sumAll = 0;
       let len = 0;
-      for (j = 0; j < subjArrayStudent.length; j++) {
+      for (let j = 0; j < subjArrayStudent.length; j++) {
         let newArr = subjArrayStudent[j];
         let sum = 0;
 
         len += newArr.length;
-        for (k = 0; k < newArr.length; k++) {
+        for (let k = 0; k < newArr.length; k++) {
           sum += parseInt(newArr[k], 10);
         }
 
@@ -116,7 +116,7 @@ getStudentsNames(students);
 function calculateWordLetters(word) {
   let obj = {};
 
-  for (i = 0; i < word.length; i++) {
+  for (let i = 0; i < word.length; i++) {
     let char = word.charAt(i);
 
     obj[char] = isNaN(obj[char]) ? 1 : obj[char] + 1;
