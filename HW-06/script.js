@@ -103,15 +103,11 @@ function getStudentInfo(student) {
 console.log(getStudentInfo("Anton".toUpperCase()));
 
 function getStudentsNames(students) {
-  let namesArray = [];
-  for (let i in students) {
-    namesArray.push(Object.values(students[i].name));
-  }
-
-  console.log(namesArray.sort());
+  const studentsNames = students.map((student) => student.name);
+  return studentsNames.sort();
 }
+console.log(getStudentsNames(students));
 //5
-getStudentsNames(students);
 
 function calculateWordLetters(word) {
   let obj = {};
