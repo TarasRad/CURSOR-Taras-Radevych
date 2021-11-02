@@ -1,0 +1,16 @@
+.bigSquare {
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.littleSquare {
+  width: 50px;
+  height: 50px;
+}
