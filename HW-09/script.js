@@ -27,4 +27,5 @@ const generateBlocksInterval = () => {
     generateBlocks();
   }, 1000);
 };
+
 generateBlocksInterval();
