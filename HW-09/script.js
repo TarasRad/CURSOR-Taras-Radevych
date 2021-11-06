@@ -1,25 +1,16 @@
 const bigSquare = document.createElement("div");
 bigSquare.className = "bigSquare";
-document.body.prepend(bigSquare);
+document.body.append(bigSquare);
 
 const generateBlocks = () => {
-  function randomSquare() {
-    const randomColor = () => Math.floor(Math.random() * 256);
-    return (
-      "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"
-    );
-  }
-
-  for (let horizontal = 0; horizontal < 5; horizontal++) {
-    for (let vertical = 0; vertical < 5; vertical++) {
-      const Square = document.createElement("div");
-      Square.classList.add("littleSquare");
-      Square.style.backgroundColor = randomSquare();
-      bigSquare.append(Square);
-    }
+  for (let i = 0; i < 25; i++) {
+    const square = document.createElement("div"); //створює div*25
+    square.classList.add("square"); //присвоює всім одинаковий клас
+    square.style.backgroundColor =
+      "#" + Math.floor(Math.random() * 16777215).toString(16);
+    bigSquare.append(square);
   }
 };
-generateBlocks();
 
 const generateBlocksInterval = () => {
   setInterval(() => {
